@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Akku ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+*{box-sizing:border-box}
+body{
+ margin:0; min-height:100vh;
+ font-family:'Comfortaa',sans-serif;
+ background:linear-gradient(135deg,#fff1e8,#f9dce5,#f8e8d5);
+ color:#754b50; text-align:center;
+}
+.screen{
+ display:none; min-height:100vh; padding:35px 18px;
+ align-items:center; justify-content:center; flex-direction:column;
+}
+.screen.active{display:flex}
+.panel{
+ width:min(620px,95%); background:#fffaf5;
+ border:2px solid #f3d5c9; border-radius:28px;
+ padding:28px 22px; box-shadow:0 12px 35px #9b687522;
+}
+h1,h2{font-family:'Playfair Display',serif}
+h1{font-size:clamp(2rem,6vw,3.2rem);margin:12px 0}
+h2{font-size:2rem}
+p{line-height:1.8}
+button{
+ border:0; border-radius:30px; padding:14px 25px;
+ background:#bd7180;color:white;font:600 1rem 'Comfortaa';
+ cursor:pointer;margin:10px;box-shadow:0 5px 12px #bd718044;
+}
+button:hover{background:#a85b6c;transform:translateY(-2px)}
+input{
+ padding:14px;border:2px solid #e7b9bd;border-radius:20px;
+ font:1rem 'Comfortaa';width:80%;max-width:260px;text-align:center;
+}
+.small{font-size:.9rem;color:#a17a78}
+.emoji{font-size:3rem}
+.cake{font-size:6rem;line-height:1.3}
+.teddy{font-size:4rem}
+.letter{
+ background:#fff4e8;border:1px dashed #d6a28e;
+ padding:24px;border-radius:16px;text-align:left;
+ font-family:'Playfair Display',serif;font-size:1.08rem;line-height:1.9;
+}
+.jar{
+ width:190px;height:230px;margin:20px auto;
+ border:5px solid #c8a6a0;border-top:10px solid #c8a6a0;
+ border-radius:35px 35px 48px 48px;
+ background:#ffffff88;display:flex;align-items:center;
+ justify-content:center;font-size:5rem;position:relative;
+}
+.chit{
+ background:#fff0b9;border-radius:12px;padding:18px;
+ margin:15px auto;max-width:380px;
+ font-family:'Playfair Display',serif;font-size:1.25rem;
+ animation:pop .5s ease;
+}
+@keyframes pop{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.cake-big{font-size:8rem;cursor:pointer;transition:.3s}
+.cake-big.cut{transform:rotate(-8deg) scale(.9)}
+iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:16px}
+.footer{margin-top:20px;font-size:.8rem;color:#ad8986}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<section id="s1" class="screen active">
+ <div class="panel">
+  <div class="emoji">🧸🌹</div>
+  <h1>A Little Surprise!</h1>
+  <p>A special birthday surprise is waiting for you, Akku.</p>
+  <p>Enter the secret password 💌</p>
+  <input id="password" type="password" placeholder="Secret password">
+  <br>
+  <button onclick="unlock()">Open My Surprise 💗</button>
+  <p id="error" class="small"></p>
+  <div class="footer">Made with love by Chinnu</div>
+ </div>
+</section>
+
+<!-- WELCOME -->
+<section id="s2" class="screen">
+ <div class="panel">
+  <div class="emoji">🎀🌸✨</div>
+  <h1>Happy Birthday, Akku!</h1>
+  <div class="cake">🎂</div>
+  <div class="teddy">🧸</div>
+  <h2>Happy welcome to new year of your birth!</h2>
+  <p>All the very best for your 22nd year! 💗</p>
+  <button onclick="show('s3')">Next surprise →</button>
+ </div>
+</section>
+
+<!-- LETTER -->
+<section id="s3" class="screen">
+ <div class="panel">
+  <div class="emoji">💌🌷</div>
+  <h1>A Letter From Chinnu</h1>
+  <div class="letter">
+   ♡ DEAR AKKU ♡<br><br>
+ 
+  Happy Birthday, Akku! ❤️
+
+  I'm so grateful to have you as my big sister. Having you in my life is one of the best gifts I could ever ask for. No matter how many times I say it, I'll never get tired of telling you how much I love you. You truly are the best sister ever, and I'm so lucky to be yours.
+  I wish you endless happiness, good health, and the strength to face every challenge that comes your way✨. I know life hasn't always been easy, but I hope you never lose faith in yourself. Keep growing, keep dreaming, and become everything you've always wanted to be. You deserve a beautiful life filled with wonderful moments.
+  And hey, we still have a big dream to fulfil together! 🥂One day, we'll achieve our goals, pack our bags, and finally travel to South Korea. We'll explore new places, try delicious food, take countless pictures, and create memories that we'll talk about for years.
+  I hope this new year of your life brings you closer to everything your heart wishes for💗.
+  I love you so much, Akku. ❤️
+  Happy Birthday to my forever favourite big sister! 🎂💕<br><br>
+  With all my love,<br>
+   Chinnu 💗
+  </div>
+  <button onclick="show('s4')">More surprise 🎁</button>
+ </div>
+</section>
+
+<!-- WISH JAR -->
+<section id="s4" class="screen">
+ <div class="panel">
+  <div class="emoji">🫙✨</div>
+  <h1>A Jar Full of Wishes</h1>
+  <p>Open each little chit to find a wish from me!</p>
+  <div class="jar">💌</div>
+  <div id="wish" class="chit">Your first wish is waiting...</div>
+  <button id="wishButton" onclick="nextWish()">Open a chit 💗</button>
+  <button id="moreButton" style="display:none" onclick="show('s5')">One more surprise →</button>
+ </div>
+</section>
+
+<!-- CAKE CUTTING -->
+<section id="s5" class="screen">
+ <div class="panel">
+  <div class="emoji">🎉🍫</div>
+  <h1>Time for Birthday Cake!</h1>
+  <p>A chocolate cake made specially for you!</p>
+  <div class="cake-big" id="bigCake" onclick="cutCake()">🎂</div>
+  <div class="teddy">🧸</div>
+  <p id="cakeMessage">Tap the cake to cut it! 🍰</p>
+  <!-- If the audio file is in the exact same folder as your HTML file -->
+ <button onclick="playBirthday('the_mountain-happy-birthday-508020.mp3')">▶ Play Birthday Song</button>
+ <button onclick="show('s6')">Final surprise 💜</button>  
+  <p class="small">Cake cutting is just a little animation on this screen!</p>
+ </div>
+</section>
+
+<!-- FINAL BTS SURPRISE -->
+<section id="s6" class="screen">
+ <div class="panel">
+  <div class="emoji">💜🎤✨</div>
+  <h1>And now... BTS!</h1>
+  <p>Because every birthday deserves a little Dynamite! 💥</p>
+  
+  <!-- Beautiful card that links directly to YouTube safely -->
+  <div style="background: #f3e8ff; border: 2px dashed #b794f4; padding: 30px 20px; border-radius: 16px; margin: 20px 0;">
+   <p style="font-size: 1.2rem; margin-bottom: 15px;">🎉 Click below to watch the special video on YouTube!</p>
+   <a href="https://youtu.be/gdZLi9oWNZg?si=070zy5YgPHyB--M3" target="_blank">
+    <button style="background: #7c3aed; box-shadow: 0 5px 12px #7c3aed44;">✨ Open BTS Dynamite Video 💜</button>
+   </a>
+  </div>
+  
+  <p>Happy Birthday once again, Akku! 💗</p>
+  <h2>Saranghae! 🇰🇷</h2>
+  <div class="teddy">🧸💐</div>
+  <button onclick="show('s2')">Replay the surprise ↻</button>
+ </div>
+</section>
+
+
+<script>
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+}
+
+function unlock(){
+ const value=document.getElementById('password').value;
+ if(value==='2004'){
+  document.getElementById('error').textContent='';
+  show('s2');
+ }else{
+  document.getElementById('error').textContent='Oops! That password is not correct. Try again 💗';
+ }
+}
+
+const wishes=[
+ 'I love you Akku ❤️',
+ 'Wish you very happy birthday 🎂',
+ 'I wish all your dream come true ✨',
+ 'I wish to be together happily always 🧸'
+];
+let wishIndex=0;
+
+function nextWish(){
+ if(wishIndex<wishes.length){
+  document.getElementById('wish').textContent=wishes[wishIndex];
+  wishIndex++;
+ }
+ if(wishIndex===wishes.length){
+  document.getElementById('wishButton').style.display='none';
+  document.getElementById('moreButton').style.display='inline-block';
+ }
+}
+
+function cutCake(){
+ const cake=document.getElementById('bigCake');
+ cake.classList.add('cut');
+ document.getElementById('cakeMessage').textContent=
+  'Yay! The cake is cut! Happy Birthday, Akku! 🎉🍰';
+}
+
+/*
+ Optional birthday audio:
+ Put a legally usable audio file named birthday.mp3
+ in the same folder as index.html.
+*/
+function playBirthday(songName) {
+ const audio = new Audio(songName);
+ audio.play().catch(()=>{
+  document.getElementById('cakeMessage').textContent=
+   'Make sure the audio file name matches exactly in this folder! 🎵';
+ });
+}
+
+</script>
+</body>
+</html>
